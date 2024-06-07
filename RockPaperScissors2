@@ -1,0 +1,58 @@
+import random
+
+def playerGo():
+    choice = input("Choose Rock, Paper or Scissors: ").lower()
+    
+    while choice not in ("rock", "paper", "scissors"):
+        print("Error - invalid choice")
+        choice = input("Choose Rock, Paper or Scissors: ").lower()
+    return choice
+
+def computerGo():
+    choice = random.randint(1, 3)
+    
+    if choice == 1:
+        return "rock"
+    elif choice == 2:
+        return "paper"
+    else:
+        return "scissors"
+
+random.seed()
+
+playerLives = 3
+computerLives = 3
+
+while playerLives > 0 and computerLives > 0:
+    player = playerGo()
+    computer = computerGo()
+    
+    print("")
+    print("Player chose:", player)
+    print("Computer chose:", computer)
+    print("")
+    
+    if (player == 'rock' and computer == 'scissors') or \
+       (player == 'scissors' and computer == 'paper') or \
+       (player == 'paper' and computer == 'rock'):
+        print("Player wins!")
+        computerLives -= 1
+    
+    elif (player == 'rock' and computer == 'paper') or \
+         (player == 'scissors' and computer == 'rock') or \
+         (player == 'paper' and computer == 'scissors'):
+        print("Computer wins :-(")
+        playerLives -= 1
+    
+    else:
+        print("Draw!")
+    
+    print("")
+    print("Player lives remaining:", playerLives)
+    print("Computer lives remaining:", computerLives)
+    print("")
+
+if playerLives == 0:
+    print("You lose!")
+else:
+    print("You win!")
