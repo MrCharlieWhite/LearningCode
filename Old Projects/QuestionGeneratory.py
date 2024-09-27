@@ -15,12 +15,12 @@ def printResult(userAnswer,questionAnswer ):
         print("well done")
     else:
         print("incorrect")
-
+7
 
 def main(): 
-    for question in range(0,2):
+    for iteration in range(0,2):
         rn1, rn2, answer = getQuestionNumbers()
         ua = getUserAnswer(rn1,rn2)
         printResult(ua,answer)
-
+ 
 main()
